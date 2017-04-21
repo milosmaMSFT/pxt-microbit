@@ -217,7 +217,7 @@
   "pins.onPulsed": "Configures this pin to a digital input, and generates events where the timestamp is the duration that this pin was either ``high`` or ``low``.",
   "pins.onPulsed|param|name": "digital pin to register to, eg: DigitalPin.P0",
   "pins.onPulsed|param|pulse": "the value of the pulse, eg: PulseValue.High",
-  "pins.ping": "Send a ping and get the echo time (in microseconds) as a result",
+  "pins.ping": "Send a ping and get the echo time or distance",
   "pins.ping|param|echo": "the echo pin, eg: DigitalPin.P1",
   "pins.ping|param|maxCmDistance": "maximum distance in centimeters, eg: 500",
   "pins.ping|param|trig": "the tigger pin",
