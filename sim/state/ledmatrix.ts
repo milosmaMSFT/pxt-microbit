@@ -28,7 +28,7 @@ namespace pxsim {
             this.data = data;
         }
         public print() {
-            console.log(`Image id:${this.id} refs:${this.refcnt} size:${this.width}x${Image.height}`)
+            // console.debug(`Image id:${this.id} refs:${this.refcnt} size:${this.width}x${Image.height}`)
         }
         public get(x: number, y: number): number {
             if (x < 0 || x >= this.width || y < 0 || y >= 5) return 0;
@@ -53,9 +53,9 @@ namespace pxsim {
         }
 
         public shiftRight(cols: number) {
-            for (let x = this.width - 1; x <= 0; --x)
+            for (let x = this.width - 1; x >= 0; --x)
                 for (let y = 0; y < 5; ++y)
-                    this.set(x, y, x > cols ? this.get(x - cols, y) : 0);
+                    this.set(x, y, x >= cols ? this.get(x - cols, y) : 0);
         }
 
         public clear(): void {
@@ -129,16 +129,35 @@ namespace pxsim.images {
 }
 
 namespace pxsim.ImageMethods {
-    export function showImage(leds: Image, offset: number) {
+    export function showImage(leds: Image, offset: number, interval: number) {
         pxtrt.nullCheck(leds)
-        leds.copyTo(offset, 5, board().ledMatrixState.image, 0)
-        runtime.queueDisplayUpdate()
+        let cb = getResume();
+        let first = true;
+
+        board().ledMatrixState.animationQ.enqueue({
+            interval,
+            frame: () => {
+                if (first) {
+                    leds.copyTo(offset, 5, board().ledMatrixState.image, 0)
+                    first = false;
+                    return true;
+                }
+                return false;
+            },
+            whenDone: cb
+        })
     }
 
     export function plotImage(leds: Image, offset: number): void {
         pxtrt.nullCheck(leds)
-        leds.copyTo(offset, 5, board().ledMatrixState.image, 0)
-        runtime.queueDisplayUpdate()
+
+        board().ledMatrixState.animationQ.enqueue({
+            interval: 0,
+            frame: () => {
+                leds.copyTo(offset, 5, board().ledMatrixState.image, 0)
+                return false;
+            }
+        })
     }
 
     export function height(leds: Image): number {
@@ -155,8 +174,8 @@ namespace pxsim.ImageMethods {
         ImageMethods.plotImage(leds, frame * Image.height);
     }
 
-    export function showFrame(leds: Image, frame: number) {
-        ImageMethods.showImage(leds, frame * Image.height);
+    export function showFrame(leds: Image, frame: number, interval: number) {
+        ImageMethods.showImage(leds, frame * Image.height, interval);
     }
 
     export function pixel(leds: Image, x: number, y: number): number {
@@ -195,11 +214,16 @@ namespace pxsim.ImageMethods {
         board().ledMatrixState.animationQ.enqueue({
             interval: interval,
             frame: () => {
-                //TODO: support right to left.
                 if (off >= leds.width || off < 0) return false;
-                stride > 0 ? display.shiftLeft(stride) : display.shiftRight(-stride);
-                let c = Math.min(stride, leds.width - off);
-                leds.copyTo(off, c, display, 5 - stride)
+                if (stride > 0) {
+                    display.shiftLeft(stride);
+                    const c = Math.min(stride, leds.width - off);
+                    leds.copyTo(off, c, display, 5 - stride)
+                } else {
+                    display.shiftRight(-stride);
+                    const c = Math.min(-stride, leds.width - off);
+                    leds.copyTo(off, c, display, 0)
+                }
                 off += stride;
                 return true;
             },
@@ -223,7 +247,7 @@ namespace pxsim.basic {
             clearScreen();
             pause(interval * 5);
         } else {
-            if (s.length == 1) showLeds(createImageFromString(s + " "), interval * 5)
+            if (s.length == 1) showLeds(createImageFromString(s), 0);
             else ImageMethods.scrollImage(createImageFromString(s + " "), 1, interval);
         }
     }
@@ -266,7 +290,7 @@ namespace pxsim.led {
     }
 
     export function setBrightness(value: number): void {
-        board().ledMatrixState.brigthness = value;
+        board().ledMatrixState.brigthness = Math.max(0, Math.min(255, value));
         runtime.queueDisplayUpdate()
     }
 

@@ -1,8 +1,9 @@
 namespace pxsim {
+    const SERIAL_BUFFER_LENGTH = 16;
     export class SerialState {
         serialIn: string[] = [];
 
-        public recieveData(data: string) {
+        public receiveData(data: string) {
             this.serialIn.push();
         }
 
@@ -13,18 +14,15 @@ namespace pxsim {
 
         serialOutBuffer: string = "";
         writeSerial(s: string) {
-            for (let i = 0; i < s.length; ++i) {
-                let c = s[i];
-                this.serialOutBuffer += c;
-                if (c == "\n") {
-                    Runtime.postMessage(<SimulatorSerialMessage>{
-                        type: "serial",
-                        data: this.serialOutBuffer,
-                        id: runtime.id
-                    })
-                    this.serialOutBuffer = ""
-                    break;
-                }
+            this.serialOutBuffer += s;
+            if (/\n/.test(this.serialOutBuffer) || this.serialOutBuffer.length > SERIAL_BUFFER_LENGTH) {
+                Runtime.postMessage(<SimulatorSerialMessage>{
+                    type: 'serial',
+                    data: this.serialOutBuffer,
+                    id: runtime.id,
+                    sim: true
+                })
+                this.serialOutBuffer = '';
             }
         }
     }
@@ -35,16 +33,12 @@ namespace pxsim.serial {
         board().writeSerial(s);
     }
 
+    export function readUntil(del: string): string {
+        return readString();
+    }
+
     export function readString(): string {
         return board().serialState.readSerial();
-    }
-
-    export function readLine(): string {
-        return board().serialState.readSerial();
-    }
-
-    export function readUntil(del: string): string {
-        return readLine();
     }
 
     export function onDataReceived(delimiters: string, handler: RefAction) {

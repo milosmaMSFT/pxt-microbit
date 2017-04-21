@@ -1,7 +1,7 @@
 /**
  * Support for additional Bluetooth services.
  */
-//% color=#0082FB weight=20
+//% color=#0082FB weight=96 icon="\uf294"
 namespace bluetooth {
     /**
     *  Writes to the Bluetooth UART service buffer. From there the data is transmitted over Bluetooth to a connected device.
@@ -59,8 +59,8 @@ namespace bluetooth {
     //% help=bluetooth/advertise-uid blockExternalInputs=1
     export function advertiseUid(ns: number, instance: number, power: number, connectable: boolean) {
         const buf = pins.createBuffer(16);
-        buf.fill(ns, 6, 4);
-        buf.fill(instance, 12, 4);
+        buf.setNumber(NumberFormat.Int32BE, 6, ns);
+        buf.setNumber(NumberFormat.Int32BE, 12, instance);
         bluetooth.advertiseUidBuffer(buf, power, connectable);
     }
 }

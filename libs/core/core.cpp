@@ -21,7 +21,12 @@ namespace String_ {
 
     //%
     int compare(StringData *s, StringData *that) {
-        return strcmp(s->data, that->data);
+      int compareResult = strcmp(s->data, that->data);
+      if (compareResult < 0)
+        return -1;
+      else if (compareResult > 0)
+        return 1;
+      return 0;
     }
 
     //%
@@ -76,7 +81,7 @@ namespace Boolean_ {
     }
 
     //%
-    bool bang(bool v) { return !v; }
+    bool bang(int v) { return v == 0; }
 }
 
 namespace Number_ {
@@ -153,15 +158,19 @@ namespace Array_ {
     //%
     int length(RefCollection *c) { return c->length(); }
     //%
+    void setLength(RefCollection *c, int newLength) { c->setLength(newLength); }    
+    //%
     void push(RefCollection *c, uint32_t x) { c->push(x); }
     //%
     uint32_t pop(RefCollection *c) { return c->pop(); }    
     //%
     uint32_t getAt(RefCollection *c, int x) { return c->getAt(x); }
     //%
-    void removeAt(RefCollection *c, int x) { c->removeAt(x); }
+    void setAt(RefCollection *c, int x, uint32_t y) { c->setAt(x, y); }    
     //%
-    void setAt(RefCollection *c, int x, uint32_t y) { c->setAt(x, y); }
+    uint32_t removeAt(RefCollection *c, int x) { return c->removeAt(x); }
+    //%
+    void insertAt(RefCollection *c, int x, uint32_t value) { c->insertAt(x, value); }    
     //%
     int indexOf(RefCollection *c, uint32_t x, int start) { return c->indexOf(x, start); }
     //%
@@ -215,7 +224,8 @@ namespace pxt {
   uint32_t afterProgramPage() {
     uint32_t ptr = (uint32_t)&bytecode[0];
     ptr += programSize();
-    ptr = (ptr + (PAGE_SIZE - 1)) & ~(PAGE_SIZE - 1);
+    if (ptr % PAGE_SIZE != 0)
+      ptr = (ptr & ~(PAGE_SIZE-1)) + PAGE_SIZE;
     return ptr;
   }
 }

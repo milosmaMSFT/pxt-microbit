@@ -12,7 +12,7 @@ item.showImage(0);
 ### Parameters
 
 * an [image](/reference/images/image) (picture). It is usually a square with five LEDs on a side, but it might be wider. 
-* a [number](/reference/types/number) that says how many LEDs from the left of the picture the @boardname@ should start. `0` means start at the first **frame** of the picture, `5` means start at the second frame, `10` means start at the third, and so on.
+* a [number](/types/number) that says how many LEDs from the left of the picture the @boardname@ should start. `0` means start at the first **frame** of the picture, `5` means start at the second frame, `10` means start at the third, and so on.
 
 ### Example: Flip-flopping arrow
 
@@ -41,7 +41,7 @@ input.onButtonPressed(Button.B, () => {
 
 ### See also
 
-[Getting Started](/getting-started), [image](/reference/images/image),
+[image](/reference/images/image),
 [create image](/reference/images/create-image),
 [create big image](/reference/images/create-big-image),
 [scroll image](/reference/images/scroll-image), [show animation](/reference/basic/show-animation)

@@ -12,10 +12,11 @@
 @primaryColor: @purple;
 
 @teal: #3891A6;
-@blue: #456990;
+@blue: #3454D1;
 @red: #EF767A;
 @pink: #F46197;
 @yellow: #FDE74C;
+@grey:#95a5a6;
 
 /* Microbit.org colors */
 @orange: #ff8b27;
@@ -28,8 +29,43 @@
          PXT Overrides
 *******************************/
 
-@mainMenuHeight: 5rem;
-@mobileMenuHeight: 4.4rem;
+/*-------------------
+   Menu
+--------------------*/
+
+@mainMenuInvertedBackground: @blue;
+@mainMenuTutorialBackground: @orange;
+
+@mainMenuBlocksJsToggleColor: @primaryColor;
+
+@tutorialSelectedMenuColor: @blue;
+
+/*-------------------
+   Layout
+--------------------*/
+
+@sideBarWidth: 22rem;
+@simulatorWidth: 27rem;
+@simulatorWidthSmall: 20rem;
+
+/*-------------------
+   Background
+--------------------*/
 
 @simulatorBackground: #FDFDFF;
+@editorToolsBackground: @simulatorBackground;
 @blocklySvgColor: #ecf0f1;
+
+/*-------------------
+   Side Docs
+--------------------*/
+
+@sidedocsButtonsTop: (@mainMenuHeight + 1rem);
+@sidedocsButtonsRight: 4.25rem;
+
+/*-------------------
+   Editor
+--------------------*/
+
+@blocklyToolboxColor: rgba(0, 0, 0, 0.05);
+@trashIconColor: @primaryColor;

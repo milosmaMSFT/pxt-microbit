@@ -14,11 +14,10 @@
     "cloud": {
         "workspace": false,
         "packages": true,
-        "sharing": false,
-        "publish": false,
+        "sharing": true,
+        "publishing": true,
         "preferredPackages": [
-            "Microsoft/pxt-neopixel",
-            "Microsoft/pxt-filesystem"
+            "Microsoft/pxt-neopixel"
         ],
         "githubPackages": true
     },
@@ -28,6 +27,7 @@
         "deployDrives": "(MICROBIT|MBED)",
         "driveName": "MICROBIT",
         "hexMimeType": "application/x-microbit-hex",
+        "openocdScript": "source [find interface/cmsis-dap.cfg]; source [find target/nrf51.cfg]",
         "upgrades": [
             {
                 "type": "package",
@@ -63,6 +63,12 @@
                 "map": {
                     "device_get_acceleration": "device_acceleration"
                 }
+            },
+            {
+                "type": "blockValue",
+                "map": {
+                    "device_print_message.message": "text"
+                }
             }
         ]
     },
@@ -71,11 +77,14 @@
         "loopsBlocks": true,
         "logicBlocks": true,
         "variablesBlocks": true,
+        "textBlocks": true,
         "onStartColor": "#0078D7",
-        "onStartNamespace": "basic"
+        "onStartNamespace": "basic",
+        "onStartWeight": 54
     },
     "simulator": {
         "autoRun": true,
+        "enableTrace": true,
         "streams": false,
         "aspectRatio": 1.22,
         "parts": true,
@@ -178,7 +187,7 @@
         "yottaTarget": "bbc-microbit-classic-gcc",
         "yottaCorePackage": "microbit",
         "githubCorePackage": "lancaster-university/microbit",
-        "gittag": "v2.0.0-rc7",
+        "gittag": "v2.0.0-rc9",
         "serviceId": "microbit"
     },
     "serial": {
@@ -188,61 +197,47 @@
     },
     "appTheme": {
         "accentColor": "#5C005C",
-        "logoUrl": "http://microbit.org/",
+        "logoUrl": "https://microbit.org/",
         "logo": "./static/logo.portrait.white.svg",
         "docsLogo": "./static/logo.square.white.svg",
         "portraitLogo": "./static/logo.square.white.svg",
         "footerLogo": "./static/logo.portrait.black.svg",
         "cardLogo": "./static/icons/apple-touch-icon.png",
         "appLogo": "./static/icons/apple-touch-icon.png",
-        "organization": "Microsoft",
-        "organizationUrl": "https://pxt.io/",
-        "organizationLogo": "./static/Microsoft-logo_rgb_c-gray.png",
+        "organization": "Microsoft MakeCode",
+        "organizationUrl": "https://makecode.com/",
+        "organizationLogo": "./static/Microsoft-logo_rgb_c-gray-square.png",
         "organizationWideLogo": "./static/Microsoft-logo_rgb_c-white.png",
         "homeUrl": "https://pxt.microbit.org/",
         "embedUrl": "https://pxt.microbit.org/",
-        "privacyUrl": "https://go.microsoft.com/fwlink/?LinkId=521839",
-        "termsOfUseUrl": "https://go.microsoft.com/fwlink/?LinkID=206977",
+        "shareUrl": "https://pxt.microbit.org/",
+        "legacyDomain": "pxt.microbit.org",
+        "privacyUrl": "https://makecode.com/privacy",
+        "termsOfUseUrl": "https://makecode.com/termsofuse",
         "githubUrl": "https://github.com/Microsoft/pxt-microbit",
+        "galleries": {
+            "Projects": "projects",
+            "Examples": "examples"
+        },
         "projectGallery": "projects",
+        "exampleGallery": "examples",
         "crowdinProject": "kindscript",
         "boardName": "micro:bit",
-        "sideDoc": "getting-started",
-        "browserSupport": [
-            {
-                "name": "unsupported",
-                "os": "*",
-                "path": "/browsers"
-            },
-            {
-                "name": "unsupported",
-                "os": "mac",
-                "path": "/browsers/mac"
-            },
-            {
-                "name": "unsupported",
-                "os": "linux",
-                "path": "browsers/linux"
-            },
-            {
-                "name": "unsupported",
-                "os": "rpi",
-                "path": "/raspberry-pi"
-            },
-            {
-                "name": "unsupported",
-                "os": "windows",
-                "path": "/browsers/windows"
-            }
-        ],
+        "driveDisplayName": "MICROBIT",
+        "sideDoc": "tutorials/getting-started",
+        "feedbackUrl": "https://www.research.net/r/MCmicro",
+        "appStoreID": "1092687276",
+        "mobileSafariDownloadProtocol": "microbithex://?data",
+        "extendEditor": true,
         "docMenu": [
             {
                 "name": "Support",
                 "path": "https://support.microbit.org/"
             },
             {
-                "name": "Getting Started",
-                "path": "/getting-started"
+                "name": "Getting started",
+                "tutorial": true,
+                "path": "/tutorials/getting-started"
             },
             {
                 "name": "Projects",
@@ -263,6 +258,10 @@
             {
                 "name": "Hardware",
                 "path": "/device"
+            },
+            {
+                "name": "Buy",
+                "path": "https://microbit.org/resellers"
             }
         ],
         "hasReferenceDocs": true,
@@ -332,13 +331,15 @@
         "invertedMenu": true,
         "coloredToolbox": true,
         "monacoToolbox": true,
-        "blocklyOptions": { 
+        "hasAudio": true,
+        "blocklyOptions": {
             "grid": {
                 "spacing": 45,
                 "length": 7,
                 "colour": "rgba(189, 195, 199, 0.30)",
                 "snap": false
             }
-        }
+        },
+        "highContrast": true
     }
 }

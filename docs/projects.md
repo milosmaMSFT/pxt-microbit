@@ -27,6 +27,10 @@ Fun games to build with your @boardname@.
   "name": "Magic Button Trick",
   "url":"/projects/magic-button-trick",
   "imageUrl":"/static/mb/projects/magic-button-trick.png"
+}, {
+  "name": "Coin Flipper",
+  "url":"/projects/coin-flipper",
+  "imageUrl": "/static/mb/projects/coin-flipper.png"
 }]
 ```
 
@@ -62,13 +66,21 @@ Fun games to build with your @boardname@.
 }]
 ```
 
-## Science and Engineering
+## Toys
 
 ```codecard
 [{
-  "name": "Timing gates",
-  "url":"/projects/timing-gates",
-  "imageUrl":"/static/mb/projects/timing-gates.jpg"
+  "name": "Inchworm",
+  "url":"/projects/inchworm",
+  "imageUrl":"/static/mb/projects/inchworm.jpg"
+}, {
+  "name": "Milk Carton Robot",
+  "url":"/projects/milk-carton-robot",
+  "imageUrl":"/static/mb/projects/milk-carton-robot.jpg"
+}, {
+  "name": "Milky Monster",
+  "url":"/projects/milky-monster",
+  "imageUrl":"/static/mb/projects/milky-monster.jpg"
 }]
 ```
 
@@ -76,6 +88,10 @@ Fun games to build with your @boardname@.
 
 ```codecard
 [{
+  "name": "Timing gates",
+  "url":"/projects/timing-gates",
+  "imageUrl":"/static/mb/projects/timing-gates.jpg"
+}, {
   "name": "Compass",
   "url":"/projects/compass",
   "imageUrl":"/static/mb/projects/a5-compass.png"
@@ -83,13 +99,10 @@ Fun games to build with your @boardname@.
   "name": "Telegraph",
   "url":"/projects/telegraph",
   "imageUrl":"/static/mb/projects/a8-network.png"
-},{
-  "name": "Radio",
-  "url":"/projects/radio",
-  "imageUrl":"/static/mb/projects/a9-radio.png"
 }]
 ```
 
 ### See Also
 
-[Flashing Heart](/projects/flashing-heart), [Smiley Buttons](/projects/smiley-buttons), [Love Meter](/projects/love-meter), [Rock Paper Scissors](/projects/rock-paper-scissors), [Compass](/projects/compass), [Hack your headphones](/projects/hack-your-headphones), [Banana keyboard](/projects/banana-keyboard), [Telegraph](/projects/telegraph), [Radio](/projects/radio), [Guitar](/projects/guitar), [Wallet](/projects/wallet), [Watch](/projects/watch)
+[Flashing Heart](/projects/flashing-heart), [Smiley Buttons](/projects/smiley-buttons), [Love Meter](/projects/love-meter), [Rock Paper Scissors](/projects/rock-paper-scissors), [Compass](/projects/compass), [Hack your headphones](/projects/hack-your-headphones), [Banana keyboard](/projects/banana-keyboard), [Telegraph](/projects/telegraph), [Guitar](/projects/guitar), [Wallet](/projects/wallet), [Watch](/projects/watch),
+[Milk Monster](/projects/milky-monster)

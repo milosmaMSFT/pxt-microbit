@@ -5,7 +5,10 @@
             "microbit-foundation"
         ],
         "approvedRepos": [
-            "CoderDojoOlney/pxt-olney"
+            "CoderDojoOlney/pxt-olney",
+            "PaulDFoster/pxt-microbit-GY521",
+            "chevyng/pxt-ucl-junkrobot",
+            "srs/pxt-bitbot"
         ]
     }
 }

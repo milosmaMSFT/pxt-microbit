@@ -1,7 +1,7 @@
 /**
 * Runtime and event utilities.
 */
-//% weight=1 color="#333333"
+//% weight=1 color="#333333" icon="\uf233"
 //% advanced=true
 namespace control {
 
@@ -9,7 +9,7 @@ namespace control {
      * Returns the value of a C++ runtime constant
      */
     //% weight=2 weight=19 blockId="control_event_source_id" block="%id" blockGap=8
-    //% shim=TD_ID
+    //% shim=TD_ID advanced=true
     export function eventSourceId(id: EventBusSource): number {
         return id;
     }
@@ -17,7 +17,7 @@ namespace control {
      * Returns the value of a C++ runtime constant
      */
     //% weight=1 weight=19 blockId="control_event_value_id" block="%id"
-    //% shim=TD_ID
+    //% shim=TD_ID advanced=true
     export function eventValueId(id: EventBusValue): number {
         return id;
     }
