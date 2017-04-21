@@ -1,7 +1,7 @@
 enum PingUnit {
     //% block="cm"
     Centimeters,
-    //% block="μs"
+    //% block="micros"
     MicroSeconds,
     //% block="inches"
     Inches
@@ -49,7 +49,7 @@ namespace pins {
     }
 
     /**
-     * Send a ping and get the echo time (in microseconds) as a result
+     * Send a ping and get the echo time or distance
      * @param trig the tigger pin
      * @param echo the echo pin, eg: DigitalPin.P1
      * @param unit desired conversion unit

@@ -1,9 +1,9 @@
 # Ping
 
-Sends a pulse on a pin and measure the time/distance for the response.
+Send a ping and get the echo time or distance as a result
 
 ```sig
-pins.ping(DigitalPin.P0, DigitalPin.P1, PingUnit.Centimeters)
+pins.ping(DigitalPin.P0, DigitalPin.P1, PingUnit.Centimeters, 500)
 ```
 
 ### Parameters
@@ -11,7 +11,7 @@ pins.ping(DigitalPin.P0, DigitalPin.P1, PingUnit.Centimeters)
 * **trigger**: the trigger pin
 * **receiver**: the receiver pin
 * **unit**: the unit of the returned number
-* **max centimeter distance**: the maximum distance to scan for
+* (optional) **max centimeter distance**: the maximum distance to scan for. Default is 500.
 
 ### Example
 
