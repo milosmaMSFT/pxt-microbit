@@ -51,12 +51,12 @@ namespace pins {
     /**
      * Send a ping and get the echo time (in microseconds) as a result
      * @param trig the tigger pin
-     * @param echo the echo pin
+     * @param echo the echo pin, eg: DigitalPin.P1
      * @param unit desired conversion unit
-     * @param maxCmDistance maximum distance in centimeters (default is 500)
+     * @param maxCmDistance maximum distance in centimeters, eg: 500
      */
     //% advanced=true
-    //% blockId=sonar_ping block="ping trig %trig|echo %echo|unit %unit"
+    //% blockId=pins_ping block="ping trig %trig|echo %echo|unit %unit"
     export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 500): number {
         // send pulse
         pins.setPull(trig, PinPullMode.PullNone);
