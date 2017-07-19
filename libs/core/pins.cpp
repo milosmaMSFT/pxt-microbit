@@ -287,7 +287,7 @@ namespace pins {
      * @param name pin to modulate pitch from
      */
     //% blockId=device_analog_set_pitch_pin block="analog set pitch pin %name"
-    //% help=pins/analog-set-pitch weight=3 advanced=true
+    //% help=pins/analog-set-pitch-pin weight=3 advanced=true
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     //% name.fieldOptions.tooltips="false"
     void analogSetPitchPin(AnalogPin name) {
