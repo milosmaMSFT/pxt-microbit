@@ -228,6 +228,7 @@ namespace pins {
     */
     //% blockId="pins_pulse_in" block="pulse in (µs)|pin %name|pulsed %value"
     //% weight=20 advanced=true
+    //% help=pins/pulse-in
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     //% name.fieldOptions.tooltips="false" name.fieldOptions.width="300"
     int pulseIn(DigitalPin name, PulseValue value, int maxDuration = 2000000) {
