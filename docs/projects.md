@@ -136,6 +136,10 @@ Fun games to build with your @boardname@.
   "name": "States of Matter",
   "url":"/projects/states-of-matter",
   "imageUrl":"/static/mb/projects/states-of-matter.jpg"
+}, {
+  "name": "Mr. Quizster",
+  "url":"/projects/mr-quizster",
+  "imageUrl":"/static/mb/projects/mr-quizster.jpg"
 }]
 ```
 
